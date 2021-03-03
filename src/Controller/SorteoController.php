@@ -4,8 +4,45 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Entity\Apuesta;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
+
 class SorteoController extends AbstractController
 {
+    public function nuevaApuesta(Request $request)
+    {
+        $apuesta = new Apuesta();
+        /* Descomenta las siguientes líneas para rellenar la apuesta
+           con información de prueba en lugar de estar vacía */
+        $apuesta->setTexto('2 13 34 44 48');
+        $apuesta->setFecha(new \DateTime('tomorrow'));
+
+        // Fecha en formato yyyy-mm-dd hh-mi-ss
+        // $apuesta->setFecha(new \DateTime('2020-10-21 23:15:12'));
+        // Fecha y hora actual
+        // $apuesta->setFecha(new \DateTime('now'));
+        // Si no ponemos argumento también coge la fecha y hora actual
+        // $apuesta->setFecha(new \DateTime());
+        // Fecha de ayer
+        // $apuesta->setFecha(new \DateTime('yesterday'));
+        // Fecha de mañana
+        // $apuesta->setFecha(new \DateTime('tomorrow'));
+
+        $form = $this->createFormBuilder($apuesta)
+            ->add('texto', TextType::class)
+            ->add('fecha', DateType::class)
+            ->add('save', SubmitType::class,
+                array('label' => 'Añadir Apuesta'))
+            ->getForm();
+
+        return $this->render('sorteo/nuevaApuesta.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }    
+
     public function euromillones()
     {
         $arr_estrellas = array();
