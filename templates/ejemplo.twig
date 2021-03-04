@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Symfony!</title>
+    </head>
+    <body>
+        <h1>{{ page_title }}</h1>
+
+        <ul id="navigation">
+            {% for item in navigation %}
+                <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+            {% endfor %}
+        </ul>
+
+        Twig define tres tipos de sintaxis:
+
+            {{ ... }} "Dice algo": imprime el valor de la expresión.
+            {% ... %} "Hace algo": controla la lógica: ifs, bucles…
+            {# ... #} "Comenta algo": es el equivalente de /*...*/ en PHP.
+
+        Twig también tiene filtros con los que podemos modificar el contenido antes de imprimirlo. 
+        Por ejemplo si añadimos |upper a una variable la transforma en mayúsculas antes de imprimir:
+
+        {{ title }} {#  Imprime la variable title normal #}
+        {{ title|upper }} {# Imprime la variable title en mayúsculas #}
+
+        Twig soporta bucles y condicionales:
+
+        {% if dia == "Martes" %}
+        <p>Hoy es martes</p>
+        {% endif %}
+
+        <ul>
+        {% for i in 1..10 %}
+            <li>{{i}}</li>
+        {% endfor %}
+        </ul>
+
+        <ul>
+        {% for nombre in listaNombres %}
+            <li>{{nombre}}</li>
+        {% endfor %}
+        </ul>
+
+        Twig incluye una larga lista de etiquetas, filtros y funciones disponibles por defecto. Se parece a PHP pero tiene algunas diferencias sutiles y agradables. El siguiente ejemplo utiliza una función cycle de twig para alternar entre ‘par’ e ‘impar’ dentro del bucle.
+
+        {% for i in 1..10 %}
+            <div class="{{ cycle(['par', 'impar'], i) }}">
+            <!-- some HTML here -->
+            </div>
+        {% endfor %}
+
+        El siguiente ejemplo muestra que los bucles for incluyen una clausula else opcional para el caso en el que no se haga ninguna iteración (por ejemplo porque queramos recorrer una lista que esté vacía):
+
+        {% for usuario in usuarios %}
+            {{usuario.nombre}
+        {% else %}
+            <p>La lista de usuarios está vacía</p>
+        {% endfor %}
+
+
+
+
+
+    </body>
+</html>
