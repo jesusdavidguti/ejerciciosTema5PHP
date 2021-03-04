@@ -7,5 +7,10 @@
     <li {% if seccionActual == "numero" %}class="actual"{% endif %}>
         <a href="/sorteo/numero">Número</a>
     </li>
+     <li {% if seccionActual == "nuevaApuesta" %}class="actual"{% endif %}>
+        <a href="{{ path('app_nueva_apuesta') }}">Nueva Apuesta</a>
+    </li>
+
+
     <!-- Más opciones -->
 </ul>

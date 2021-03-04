@@ -90,7 +90,7 @@ class SorteoController extends AbstractController
         $numero = random_int(0, $maximo);
 
         return $this->render('numero.html.twig', ['numero' => $numero, 
-                                                  'limite' => $maximo]);
+                                                  'maximo' => $maximo]);
     }
 
     public function numero()

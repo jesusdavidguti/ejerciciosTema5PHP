@@ -1,0 +1,14 @@
+{# templates/sorteo/nuevaApuesta.html.twig #}
+{% extends 'estructuraBase.html.twig' %}
+
+{% block titulo %}Nueva apuesta{% endblock %}
+
+{% block contenido %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
+
+{% block sidebar %}
+  {{ include('menu.html.twig', { 'seccionActual': "nuevaApuesta" }) }}
+{% endblock %}

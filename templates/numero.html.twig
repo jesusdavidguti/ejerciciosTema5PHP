@@ -1,7 +1,7 @@
 {# templates/sorteo/numero.html.twig #}
-{% extends 'sorteo/estructuraBase.html.twig' %}
+{% extends 'estructuraBase.html.twig' %}
 {% block sidebar %}
-{{ include('sorteo/menu.html.twig', { 'seccionActual': "numero" }) }}
+{{ include('menu.html.twig', { 'seccionActual': "numero" }) }}
 {% endblock %}
 {% block titulo %}Sorteo entre 0 y {{maximo}}{% endblock %}
 {% block contenido %}
